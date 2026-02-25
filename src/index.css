@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #050d1a;
+        color: #e8f4fd;
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #0a1628;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #2a4a7f;
+        border-radius: 3px;
+    }
+}
+
+@layer utilities {
+    .font-orbitron {
+        font-family: 'Orbitron', monospace;
+    }
+
+    .text-glow-green {
+        text-shadow: 0 0 8px rgba(57, 211, 83, 0.8), 0 0 20px rgba(57, 211, 83, 0.4);
+    }
+
+    .text-glow-blue {
+        text-shadow: 0 0 8px rgba(96, 165, 250, 0.8), 0 0 20px rgba(96, 165, 250, 0.4);
+    }
+
+    .text-glow-purple {
+        text-shadow: 0 0 8px rgba(167, 139, 250, 0.8), 0 0 20px rgba(167, 139, 250, 0.4);
+    }
+
+    .text-glow-gold {
+        text-shadow: 0 0 8px rgba(251, 191, 36, 0.8), 0 0 20px rgba(251, 191, 36, 0.4);
+    }
+
+    .text-glow-cyan {
+        text-shadow: 0 0 8px rgba(34, 211, 238, 0.8), 0 0 20px rgba(34, 211, 238, 0.4);
+    }
+
+    .glow-green {
+        box-shadow: 0 0 16px rgba(57, 211, 83, 0.4), 0 0 40px rgba(57, 211, 83, 0.15);
+    }
+
+    .glow-blue {
+        box-shadow: 0 0 16px rgba(96, 165, 250, 0.4), 0 0 40px rgba(96, 165, 250, 0.15);
+    }
+
+    .glow-purple {
+        box-shadow: 0 0 16px rgba(167, 139, 250, 0.4), 0 0 40px rgba(167, 139, 250, 0.15);
+    }
+
+    .glow-gold {
+        box-shadow: 0 0 16px rgba(251, 191, 36, 0.4), 0 0 40px rgba(251, 191, 36, 0.15);
+    }
+
+    .glass {
+        background: rgba(10, 22, 40, 0.75);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(96, 165, 250, 0.18);
+    }
+
+    .glass-light {
+        background: rgba(22, 41, 82, 0.55);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(96, 165, 250, 0.22);
+    }
+}
