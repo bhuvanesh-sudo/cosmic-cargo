@@ -210,9 +210,18 @@ export default function WeightStation({ level, onAwardPoints, onBack }) {
                                 initial={{ opacity: 0, scale: 0.5 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0 }}
-                                className="font-orbitron text-2xl text-neon-green text-glow-green font-bold"
+                                className="font-orbitron text-2xl text-neon-green text-glow-green font-bold flex items-center gap-2 justify-center"
                             >
-                                🚀 LAUNCH!
+                                <svg width="28" height="28" viewBox="0 0 40 68" fill="none" aria-hidden="true">
+                                    <ellipse cx="20" cy="38" rx="12" ry="20" fill="#1d3461" stroke="#39d353" strokeWidth="1.5" />
+                                    <path d="M20 4 C14 20 10 32 20 32 C30 32 26 20 20 4Z" fill="#0f1f3d" stroke="#2dd4bf" strokeWidth="1.5" />
+                                    <path d="M10 52 L2 64 L14 58Z" fill="#162952" stroke="#39d353" strokeWidth="1" />
+                                    <path d="M30 52 L38 64 L26 58Z" fill="#162952" stroke="#39d353" strokeWidth="1" />
+                                    <circle cx="20" cy="32" r="5" fill="#0a1628" stroke="#2dd4bf" strokeWidth="1.2" />
+                                    <ellipse cx="20" cy="58" rx="6" ry="4" fill="#fbbf24" opacity="0.85" />
+                                    <ellipse cx="20" cy="60" rx="4" ry="3" fill="#f472b6" opacity="0.7" />
+                                </svg>
+                                LAUNCH!
                             </motion.div>
                         )}
                     </AnimatePresence>
@@ -227,10 +236,15 @@ export default function WeightStation({ level, onAwardPoints, onBack }) {
                                 initial={{ opacity: 0, y: 4 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0 }}
-                                className="text-neon-gold font-inter font-semibold text-sm"
+                                className="text-neon-gold font-inter font-semibold text-sm flex items-center gap-1.5"
                                 role="alert"
                             >
-                                ⚠️ Too heavy! That pod bounced back.
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="#fbbf24" strokeWidth="2" strokeLinejoin="round" />
+                                    <line x1="12" y1="9" x2="12" y2="13" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" />
+                                    <circle cx="12" cy="17" r="1" fill="#fbbf24" />
+                                </svg>
+                                Too heavy! That pod bounced back.
                             </motion.p>
                         )}
                     </AnimatePresence>
@@ -242,7 +256,8 @@ export default function WeightStation({ level, onAwardPoints, onBack }) {
                             className="text-star-dim hover:text-star-white text-xs font-inter underline transition-colors"
                             aria-label="Remove last fuel pod"
                         >
-                            ↩ Remove last pod
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ display: 'inline', marginRight: '4px', verticalAlign: 'middle' }}><path d="M3 12a9 9 0 109-9H3" /><polyline points="3 3 3 12 12 12" /></svg>
+                            Remove last pod
                         </button>
                     )}
                 </div>

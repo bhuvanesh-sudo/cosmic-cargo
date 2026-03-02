@@ -156,7 +156,12 @@ export default function OrbitingMoons({ level, onAwardPoints, onBack }) {
                             {selected ?? '?'}
                         </div>
                         <p className="text-star-dim text-[10px] font-inter uppercase tracking-widest">
-                            {phase === 'success' ? '✓ Correct' : phase === 'wrong' ? 'Try again' : 'Drop here'}
+                            {phase === 'success' ? (
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <polyline points="5,12 10,17 20,7" stroke="#39d353" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            ) : null}
+                            {phase === 'success' ? 'Correct' : phase === 'wrong' ? 'Try again' : 'Drop here'}
                         </p>
                     </div>
 
@@ -179,8 +184,14 @@ export default function OrbitingMoons({ level, onAwardPoints, onBack }) {
                 <AnimatePresence>
                     {phase === 'success' && (
                         <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
-                            className="font-orbitron text-xl text-neon-green text-glow-green font-bold">
-                            🌙 Correct! +{level * 5} ⚡
+                            className="font-orbitron text-xl text-neon-green text-glow-green font-bold flex items-center gap-2 justify-center">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" fill="#a78bfa" fillOpacity="0.35" stroke="#a78bfa" strokeWidth="1.8" strokeLinejoin="round" />
+                            </svg>
+                            Correct! +{level * 5}
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <polygon points="13,2 3,14 12,14 11,22 21,10 12,10" fill="#fbbf24" stroke="#fbbf24" strokeWidth="1.5" strokeLinejoin="round" />
+                            </svg>
                         </motion.p>
                     )}
                 </AnimatePresence>

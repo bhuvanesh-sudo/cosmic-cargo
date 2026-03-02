@@ -138,8 +138,16 @@ export default function CargoInventory({ level, onAwardPoints, onBack }) {
                 <AnimatePresence>
                     {phase === 'success' && (
                         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                            className="font-orbitron text-xl text-neon-green text-glow-green font-bold">
-                            💎 Cargo Secured! +{level * 5} ⚡
+                            className="font-orbitron text-xl text-neon-green text-glow-green font-bold flex items-center gap-2 justify-center">
+                            <svg width="22" height="26" viewBox="0 0 44 52" fill="none" aria-hidden="true">
+                                <polygon points="22,2 40,14 40,38 22,50 4,38 4,14" fill="#22d3ee" fillOpacity="0.25" stroke="#22d3ee" strokeWidth="1.8" />
+                                <polygon points="22,10 34,18 34,36 22,44 10,36 10,18" fill="#22d3ee" fillOpacity="0.55" />
+                                <polygon points="22,10 28,14 28,22 22,26 16,22 16,14" fill="white" opacity="0.28" />
+                            </svg>
+                            Cargo Secured! +{level * 5}
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <polygon points="13,2 3,14 12,14 11,22 21,10 12,10" fill="#fbbf24" stroke="#fbbf24" strokeWidth="1.5" strokeLinejoin="round" />
+                            </svg>
                         </motion.p>
                     )}
                 </AnimatePresence>

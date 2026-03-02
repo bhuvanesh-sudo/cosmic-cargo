@@ -156,8 +156,33 @@ export default function Launchpad({ level, onAwardPoints, onBack }) {
 
             {/* Launchpad grid */}
             <div className="glass rounded-2xl p-5 mb-6">
-                <p className="text-star-dim text-xs font-inter text-center mb-4 uppercase tracking-widest">
-                    {phase === 'watching' ? '🔥 Rockets Launching...' : phase === 'answering' ? '🤔 How many are left?' : phase === 'correct' ? '✅ Correct!' : ''}
+                <p className="text-star-dim text-xs font-inter text-center mb-4 uppercase tracking-widest flex items-center justify-center gap-1.5">
+                    {phase === 'watching' && (
+                        <>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M12 2C8 8 6 13 8 18c1.5-2 3-3 4-3-1-3 1-8 4-13-2 4-2 8 0 10 0-2 1-4 2-5-1 3 0 6 2 8a4 4 0 01-8 0c0-5 3-10 3-15z" fill="#f97316" />
+                            </svg>
+                            Rockets Launching...
+                        </>
+                    )}
+                    {phase === 'answering' && (
+                        <>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10" stroke="#60a5fa" strokeWidth="2" />
+                                <path d="M12 8v4l3 3" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" />
+                            </svg>
+                            How many are left?
+                        </>
+                    )}
+                    {phase === 'correct' && (
+                        <>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10" fill="#39d353" fillOpacity="0.2" stroke="#39d353" strokeWidth="2" />
+                                <polyline points="7,12 10,15 17,9" stroke="#39d353" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                            Correct!
+                        </>
+                    )}
                 </p>
                 <div className="flex flex-wrap gap-3 justify-center items-end min-h-[100px]">
                     {Array.from({ length: problem.total }, (_, i) => {
@@ -183,16 +208,7 @@ export default function Launchpad({ level, onAwardPoints, onBack }) {
                     })}
                 </div>
 
-                {/* Remaining count hint */}
-                {phase === 'answering' && (
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="text-center text-star-dim text-sm font-inter mt-4"
-                    >
-                        {remainRockets} rocket{remainRockets !== 1 ? 's' : ''} still on the pad
-                    </motion.p>
-                )}
+
             </div>
 
             {/* Keypad */}
@@ -213,10 +229,15 @@ export default function Launchpad({ level, onAwardPoints, onBack }) {
                                 initial={{ opacity: 1, y: 0 }}
                                 animate={{ opacity: 0, y: -10 }}
                                 transition={{ duration: 0.6 }}
-                                className="text-neon-gold font-inter text-sm"
+                                className="text-neon-gold font-inter text-sm flex items-center gap-1.5"
                                 role="alert"
                             >
-                                Not quite — try again! 🌟
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="9" stroke="#fbbf24" strokeWidth="2" />
+                                    <line x1="12" y1="8" x2="12" y2="13" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" />
+                                    <circle cx="12" cy="16" r="1" fill="#fbbf24" />
+                                </svg>
+                                Not quite — try again!
                             </motion.p>
                         )}
                     </motion.div>
@@ -228,8 +249,11 @@ export default function Launchpad({ level, onAwardPoints, onBack }) {
                         animate={{ opacity: 1, scale: 1 }}
                         className="text-center"
                     >
-                        <p className="font-orbitron text-3xl text-neon-green text-glow-green font-bold">
-                            ⚡ +{level * 5} Energy Cells!
+                        <p className="font-orbitron text-3xl text-neon-green text-glow-green font-bold flex items-center gap-2 justify-center">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <polygon points="13,2 3,14 12,14 11,22 21,10 12,10" fill="#fbbf24" stroke="#fbbf24" strokeWidth="1.5" strokeLinejoin="round" />
+                            </svg>
+                            +{level * 5} Energy Cells!
                         </p>
                     </motion.div>
                 )}

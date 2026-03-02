@@ -16,7 +16,7 @@ const DIGIT_STARS = {
     9: [[0.85, 0.95], [0.85, 0.05], [0.5, 0.05], [0.15, 0.2], [0.15, 0.48], [0.5, 0.5], [0.85, 0.48]],
 };
 
-const W = 260, H = 320;
+const W = 520, H = 480;
 
 export default function ConstellationTracing({ level, onAwardPoints, onBack }) {
     const [digit, setDigit] = useState(null);
@@ -139,13 +139,20 @@ export default function ConstellationTracing({ level, onAwardPoints, onBack }) {
                     Click and drag to trace the number{' '}
                     <span className="font-orbitron text-neon-gold font-bold text-xl">{digit}</span>
                 </p>
-                <p className="text-xs text-star-dim/60 mt-1 font-inter">Connect the stars in order ✨</p>
+                <p className="text-xs text-star-dim/60 mt-1 font-inter flex items-center justify-center gap-1">
+                    Connect the stars in order
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <polygon points="12,2 14,9 22,9 16,14 18,22 12,17 6,22 8,14 2,9 10,9" fill="#fbbf24" fillOpacity="0.8" stroke="#fbbf24" strokeWidth="1" strokeLinejoin="round" />
+                    </svg>
+                </p>
             </motion.div>
 
             <div className="flex-1 flex flex-col items-center justify-center">
                 <svg
                     ref={svgRef}
-                    width={W} height={H}
+                    viewBox={`0 0 ${W} ${H}`}
+                    width="100%"
+                    style={{ maxWidth: `${W}px`, display: 'block' }}
                     className="cursor-crosshair select-none touch-none"
                     onMouseDown={handlePointerDown}
                     onMouseMove={handlePointerMove}
@@ -157,10 +164,10 @@ export default function ConstellationTracing({ level, onAwardPoints, onBack }) {
                     role="img"
                     aria-label={`Tracing pad for number ${digit}`}
                 >
-                    {/* Grid background dots */}
-                    {Array.from({ length: 8 }, (_, r) =>
-                        Array.from({ length: 6 }, (_, c) => (
-                            <circle key={`${r}-${c}`} cx={c * 52} cy={r * 46} r="1.5"
+                    {/* Grid background dots — spaced evenly across the larger canvas */}
+                    {Array.from({ length: 10 }, (_, r) =>
+                        Array.from({ length: 10 }, (_, c) => (
+                            <circle key={`${r}-${c}`} cx={c * (W / 9)} cy={r * (H / 9)} r="1.8"
                                 fill="white" opacity="0.05" />
                         ))
                     )}
@@ -197,15 +204,22 @@ export default function ConstellationTracing({ level, onAwardPoints, onBack }) {
                 <AnimatePresence>
                     {phase === 'success' && (
                         <motion.p initial={{ opacity: 0, scale: 0.7 }} animate={{ opacity: 1, scale: 1 }}
-                            className="font-orbitron text-2xl text-neon-gold text-glow-gold font-bold mt-4 text-center">
-                            ✨ Constellation Complete! +{level * 5} ⚡
+                            className="font-orbitron text-2xl text-neon-gold text-glow-gold font-bold mt-4 text-center flex items-center gap-2 justify-center">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <polygon points="12,2 14,9 22,9 16,14 18,22 12,17 6,22 8,14 2,9 10,9" fill="#fbbf24" fillOpacity="0.4" stroke="#fbbf24" strokeWidth="1.5" strokeLinejoin="round" />
+                            </svg>
+                            Constellation Complete! +{level * 5}
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <polygon points="13,2 3,14 12,14 11,22 21,10 12,10" fill="#fbbf24" stroke="#fbbf24" strokeWidth="1.5" strokeLinejoin="round" />
+                            </svg>
                         </motion.p>
                     )}
                 </AnimatePresence>
 
                 <button onClick={fetchProblem}
-                    className="mt-4 text-star-dim hover:text-star-white text-xs font-inter underline transition-colors">
-                    ↩ Reset tracing
+                    className="mt-4 text-star-dim hover:text-star-white text-xs font-inter underline transition-colors flex items-center gap-1 mx-auto">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 109-9H3" /><polyline points="3 3 3 12 12 12" /></svg>
+                    Reset tracing
                 </button>
             </div>
         </div>

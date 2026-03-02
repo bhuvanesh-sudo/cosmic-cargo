@@ -161,8 +161,19 @@ export default function SatelliteSequencing({ level, onAwardPoints, onBack }) {
                 <AnimatePresence>
                     {phase === 'success' && (
                         <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
-                            className="font-orbitron text-xl text-neon-green text-glow-green font-bold">
-                            🛰️ Sequence Locked! +{level * 5} ⚡
+                            className="font-orbitron text-xl text-neon-green text-glow-green font-bold flex items-center gap-2 justify-center">
+                            <svg width="22" height="22" viewBox="0 0 56 64" fill="none" aria-hidden="true">
+                                <rect x="2" y="22" width="14" height="22" rx="2" fill="#1d3461" stroke="#39d353" strokeWidth="1" />
+                                <rect x="40" y="22" width="14" height="22" rx="2" fill="#1d3461" stroke="#39d353" strokeWidth="1" />
+                                <rect x="16" y="18" width="24" height="30" rx="5" fill="#0f1f3d" stroke="#39d353" strokeWidth="1.8" />
+                                <line x1="28" y1="18" x2="28" y2="6" stroke="#60a5fa" strokeWidth="1.2" />
+                                <circle cx="28" cy="5" r="3" fill="#2dd4bf" />
+                                <text x="28" y="37" textAnchor="middle" dominantBaseline="middle" fill="white" fontFamily="Orbitron, monospace" fontWeight="bold" fontSize="14">OK</text>
+                            </svg>
+                            Sequence Locked! +{level * 5}
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <polygon points="13,2 3,14 12,14 11,22 21,10 12,10" fill="#fbbf24" stroke="#fbbf24" strokeWidth="1.5" strokeLinejoin="round" />
+                            </svg>
                         </motion.p>
                     )}
                 </AnimatePresence>
